@@ -307,9 +307,7 @@ h_t = o_t * \tanh(C_t) & \text{Nouvelle sortie}
 
 ### 🔹 8.1.8 Visualisation
 
-```markdown
-![Architecture LSTM](https://upload.wikimedia.org/wikipedia/commons/3/3b/The_LSTM_cell.png)
-```
+![Architecture LSTM](./Image/LSTM.png)
 
 🧠 Le schéma montre bien :
 

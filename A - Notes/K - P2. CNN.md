@@ -13,7 +13,7 @@
 
 Un **Convolutional Neural Network (CNN)** est un type de réseau de neurones artificiels conçu pour **traiter des données multidimensionnelles**, en particulier des **images**.
 
-![CNN](./images/CNN.png)
+![CNN](./Image/CNN.png)
 
 
 Les CNN sont extrêmement efficaces pour :
@@ -23,7 +23,7 @@ Les CNN sont extrêmement efficaces pour :
 * la **segmentation**,
 * et d’autres tâches de **vision par ordinateur**.
 
-![CNN example](./images/CNN_example.png)
+![CNN example](./Image/CNN_example.png)
 
 ---
 
@@ -59,7 +59,7 @@ Avant toute convolution, il faut comprendre comment un **ordinateur “voit” u
 
 Une **image numérique** est une **matrice de valeurs** où chaque élément correspond à l’**intensité lumineuse** d’un pixel.
 
-![Image binaire](./images/Image_binary.png)
+![Image binaire](./Image/Image_binary.png)
 
 Exemples :
 
@@ -69,7 +69,7 @@ Exemples :
   ]
   Chaque pixel a une valeur entre **0 (noir)** et **255 (blanc)**.
 
-  ![Image 2D](./images/image_2D.png)
+  ![Image 2D](./Image/image_2D.png)
 
 * 🎨 **Image couleur (RGB)** → matrice 3D
   [
@@ -78,7 +78,7 @@ Exemples :
   où $c \in {R,G,B}$ (Rouge, Vert, Bleu).
   Ainsi, une image de 64×64 pixels possède une matrice de taille **64×64×3**.
 
-  ![Image 3D](./images/image_3D.png)
+  ![Image 3D](./Image/image_3D.png)
 
 ---
 
@@ -144,7 +144,7 @@ Un CNN comprend généralement plusieurs **types de couches** :
 6. **Couches entièrement connectées (Fully Connected Layers)** : classification.
 7. **Couche de sortie (Output Layer)** : produit la prédiction finale.
 
-![CNN structure](./images/CNN_structure.png)
+![CNN structure](./Image/CNN_structure.png)
 
 ---
 
@@ -158,7 +158,7 @@ La **convolution** consiste à faire glisser un **filtre (kernel)** sur l’imag
 \text{Feature map} = \text{Image} * \text{Filtre}
 ]
 
-![Convultion Example](./images/Convultion_Example.png)
+![Convultion Example](./Image/Convultion_Example.png)
 
 Chaque **filtre** détecte un motif spécifique :
 
@@ -173,11 +173,11 @@ Chaque **filtre** détecte un motif spécifique :
 * Filtre : matrice 3×3.
 * À chaque position → produit scalaire entre le filtre et la zone couverte → valeur de sortie.
 
-![Convultion Start](./images/Convultion_Step_Start.png)
+![Convultion Start](./Image/Convultion_Step_Start.png)
 
 📘 Résultat : une **Feature Map**, qui indique où le motif est détecté.
 
-![Convultion End](./images/Convultion_Step_End.png)
+![Convultion End](./Image/Convultion_Step_End.png)
 ---
 
 ### ✅ Avantages :
@@ -197,7 +197,7 @@ Chaque **filtre** détecte un motif spécifique :
 * On utilise **plusieurs filtres** → plusieurs **feature maps**.
 * Chaque filtre apprend un **motif différent** pendant l’entraînement.
 
-![Convultion Loss](./images/Convultion_Loss.png)
+![Convultion Loss](./Image/Convultion_Loss.png)
 
 ---
 
@@ -353,7 +353,7 @@ Réduire la taille des **feature maps** tout en gardant l’information essentie
 Une feature map 4×4 devient une 2×2 après max pooling 2×2.
 
 
-![Max Pooling](./images/Max_pooling.png)
+![Max Pooling](./Image/Max_pooling.png)
 
 ---
 
@@ -390,7 +390,7 @@ Le **Flattening** est une opération de **mise à plat** (ou “vectorisation”
 > On transforme le tenseur 3D issu des convolutions/poolings en un **vecteur 1D**.
 
 
-![Flattening](./images/Flattening.png)
+![Flattening](./Image/Flattening.png)
 
 Formellement :
 [
@@ -439,7 +439,7 @@ Ce vecteur devient alors l’**entrée de la première couche fully connected (D
 ✅ Il rend le réseau **compatible avec les couches de type Dense**.
 
 
-![Flattening Structure](./images/Flattening_structure.png)
+![Flattening Structure](./Image/Flattening_structure.png)
 
 ---
 
@@ -498,7 +498,7 @@ Imagine un **livre** :
 Ces couches se comportent comme des **réseaux ANN classiques**.
 Elles combinent toutes les features extraites pour prédire la classe finale.
 
-![Fully Connected](./images/Fully_connected1.png)
+![Fully Connected](./Image/Fully_connected1.png)
 
 📘 Exemple :
 
@@ -507,7 +507,7 @@ Elles combinent toutes les features extraites pour prédire la classe finale.
 
 Le CNN apprend **quelles combinaisons de features** correspondent à quelle classe.
 
-![Fully Connected Prediction](./images/FC_prediction.png)
+![Fully Connected Prediction](./Image/FC_prediction.png)
 
 ---
 
@@ -546,7 +546,7 @@ L = -\sum y_i \log(\hat{y_i})
 | 4     | Fully Connected         | Combiner les features         |
 | 5     | Softmax + Cross-Entropy | Prédire et évaluer la classe  |
 
-![CNN Process](./images/CNN_Process.png)
+![CNN Process](./Image/CNN_Process.png)
 
 ---
 
