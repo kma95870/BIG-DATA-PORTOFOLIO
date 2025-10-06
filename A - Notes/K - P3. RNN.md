@@ -39,7 +39,7 @@ Si tu veux prédire le mot suivant dans
 > “Le chat mange une 🐟”
 > ➡️ Le modèle sait que “mange” précède “une” et que “une” est souvent suivi d’un objet comestible.
 
-![ANN vs RNN](./images/ANN_vs_RNN.png)
+![ANN vs RNN](./Image/ANN_vs_RNN.png)
 
 ---
 
@@ -168,9 +168,6 @@ Inversement, si (w_{rec} > 1), on a un **exploding gradient** (valeurs trop gran
 ### 💡 Motivation
 
 Le LSTM est une **évolution du RNN** conçue pour **retenir les informations sur de longues périodes**.
-
-Parfait 💪 ! Voici une **section complète et numérotée sur le fonctionnement interne des LSTM**, intégrée dans la continuité de ton cours RNN (tu pourras la placer après la section 8 sur les LSTM).
-Je te mets à la fois les **formules**, l’**interprétation intuitive**, et les **explications visuelles** pour chaque porte.
 
 ---
 
@@ -308,7 +305,7 @@ h_t = o_t * \tanh(C_t) & \text{Nouvelle sortie}
 
 ---
 
-### 🔹 8.1.8 Visualisation (schéma à insérer)
+### 🔹 8.1.8 Visualisation
 
 ```markdown
 ![Architecture LSTM](https://upload.wikimedia.org/wikipedia/commons/3/3b/The_LSTM_cell.png)
