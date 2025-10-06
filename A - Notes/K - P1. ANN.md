@@ -109,14 +109,39 @@
 
 ![Fonction Activation](Image/activation_function1.png)
 
-1. **Seuil** (step function) → binaire (0 ou 1).
-2. **Sigmoid** → utile pour probabilités.
-   [
-   \sigma(z) = \frac{1}{1+e^{-z}}
-   ]
-3. **Tanh** → valeurs entre -1 et 1.
-4. **ReLU (Rectified Linear Unit)** → $f(z)=\max(0,z)$, rapide et efficace.
-5. **Softmax** → multi-classes, transforme les scores en probabilités.
+### 🔸 9.1. Pourquoi a-t-on besoin d’une fonction d’activation ?
+
+Sans fonction d’activation, un réseau de neurones ne serait qu’une **simple combinaison linéaire** des entrées.
+
+Chaque neurone ferait :
+[
+z = \sum w_i x_i + b
+]
+et la sortie serait directement $a = z$.
+
+➡️ Même si tu empiles plusieurs couches, tu obtiendras toujours une **fonction linéaire**, équivalente à une **régression linéaire**.
+
+Or, la plupart des phénomènes du monde réel sont **non linéaires** (ex : reconnaissance d’images, langage, sons).
+Les fonctions d’activation permettent donc d’introduire une **non-linéarité** indispensable pour que le réseau puisse :
+
+* Apprendre des motifs complexes,
+* Combiner des variables de manière non triviale,
+* Décider si un neurone doit “s’activer” ou non.
+
+---
+
+### 🔸 9.2. Rôle concret d’une fonction d’activation
+
+Elle transforme la sortie brute du neurone ($z$) en une valeur “activée” ($a$) :
+[
+a = f(z)
+]
+
+Son rôle est de :
+✅ **Introduire de la non-linéarité** (rendre le modèle plus puissant),
+✅ **Stabiliser ou borner les sorties** (ex : entre 0 et 1),
+✅ **Décider l’activation du neurone**,
+✅ **Réguler la rétropropagation** (via la dérivée de $f$).
 
 ![Fonction Activation](Image/activation_function2.png)
 
@@ -125,6 +150,175 @@
 * Couches cachées → ReLU.
 * Sortie binaire → Sigmoid.
 * Sortie multi-classes → Softmax.
+---
+
+### 🔸 9.3. Fonction de Seuil (Step Function)
+
+Première fonction utilisée historiquement (Perceptron de Rosenblatt) :
+
+[
+f(z) =
+\begin{cases}
+1 & \text{si } z > 0 \
+0 & \text{sinon}
+\end{cases}
+]
+
+📘 **Interprétation** : le neurone s’active seulement si le signal dépasse un certain seuil.
+
+⚠️ **Limite** :
+
+* Non dérivable → inutilisable pour la backpropagation.
+* Décision trop brutale (0 ou 1).
+
+---
+
+### 🔸 9.4. Sigmoïde
+
+[
+f(z) = \frac{1}{1 + e^{-z}}
+]
+
+📘 **Effet** : compresse toute valeur réelle dans l’intervalle (0, 1).
+Idéale pour représenter une **probabilité**.
+
+📊 **Dérivée** :
+[
+f'(z) = f(z)(1 - f(z))
+]
+
+✅ **Avantages** :
+
+* Interprétation probabiliste.
+* Lisse et différentiable.
+
+⚠️ **Inconvénients** :
+
+* **Vanishing gradient** : les gradients deviennent très faibles pour $|z|$ grands.
+* Centrée sur 0.5 → apprentissage lent.
+
+📍 **Utilisation typique** : sortie binaire (ex : churn / non churn).
+
+---
+
+### 🔸 9.5. Tangente Hyperbolique (tanh)
+
+[
+f(z) = \tanh(z) = \frac{e^z - e^{-z}}{e^z + e^{-z}}
+]
+
+📘 **Effet** : valeurs entre -1 et 1.
+Plus “centrée” que la sigmoïde (valeurs moyennes autour de 0 → plus stable).
+
+✅ **Avantages** :
+
+* Sorties centrées → apprentissage plus rapide.
+
+⚠️ **Inconvénients** :
+
+* Vanishing gradient pour valeurs extrêmes.
+
+📍 **Utilisation typique** : couches cachées dans petits réseaux ou RNN.
+
+---
+
+### 🔸 9.6. ReLU (Rectified Linear Unit)
+
+[
+f(z) = \max(0, z)
+]
+
+📘 **Principe** :
+
+* Si $z > 0$, le neurone transmet sa valeur.
+* Si $z \le 0$, il est “éteint” (sortie = 0).
+
+✅ **Avantages** :
+
+* Calcul très rapide.
+* Atténue le problème du vanishing gradient.
+* Rend le réseau plus profond et plus stable.
+
+⚠️ **Inconvénients** :
+
+* **Dying ReLU problem** : certains neurones restent bloqués à 0 si les poids deviennent trop négatifs.
+
+📍 **Utilisation typique** : toutes les couches cachées des réseaux profonds (CNN, ANN, etc.).
+
+---
+
+### 🔸 9.7. Leaky ReLU
+
+[
+f(z) =
+\begin{cases}
+z & \text{si } z > 0 \
+0.01z & \text{sinon}
+\end{cases}
+]
+
+📘 **Principe** :
+Corrige le “dying ReLU” en gardant un petit flux d’information même quand $z<0$.
+
+✅ **Avantages** :
+
+* Apprentissage plus fluide.
+* Zéro neurone bloqué.
+
+📍 **Utilisation typique** : couches cachées (alternative à ReLU).
+
+---
+
+### 🔸 9.8. Softmax
+
+[
+f(z_i) = \frac{e^{z_i}}{\sum_j e^{z_j}}
+]
+
+📘 **Principe** : transforme un vecteur de scores $(z_1, z_2, ..., z_n)$ en **probabilités normalisées** dont la somme vaut 1.
+
+✅ **Avantages** :
+
+* Interprétation directe en probabilité.
+* Idéale pour multi-classes.
+
+⚠️ **Inconvénients** :
+
+* Sensible aux valeurs extrêmes de $z$.
+
+📍 **Utilisation typique** : couche de sortie des modèles de classification multi-classes (ex : reconnaissance d’images).
+
+---
+
+### 🔸 9.9. En résumé – Choix de la fonction d’activation
+
+| Type de couche       | Fonction d’activation recommandée | Cas d’usage                       |
+| -------------------- | --------------------------------- | --------------------------------- |
+| Couches cachées      | ReLU / Leaky ReLU / tanh          | Apprentissage profond             |
+| Sortie binaire       | Sigmoid                           | Classification binaire            |
+| Sortie multi-classe  | Softmax                           | Classification d’images / texte   |
+| Réseaux récurrents   | tanh / ReLU                       | Séquences temporelles             |
+| Réseaux peu profonds | tanh                              | Modèles simples / petits datasets |
+
+---
+
+### 🔸 9.10. Illustration (à ajouter en images)
+
+Je te recommande d’intégrer ces **visuels explicatifs** dans ton Markdown :
+
+1. **Courbes d’activation :**
+
+   * Axe X = $z$
+   * Axe Y = $f(z)$
+   * Tracer Sigmoid, tanh, ReLU et Leaky ReLU sur le même graphique.
+
+2. **Schéma d’un neurone avec activation :**
+
+   ```
+   Entrées → Somme pondérée → Fonction d’activation → Sortie
+   ```
+
+3. **Tableau de comparaison** (comme ci-dessus) à afficher sous forme d’image.
 
 ---
 
