@@ -340,7 +340,7 @@ Je te recommande d’intégrer ces **visuels explicatifs** dans ton Markdown :
 * **Stochastic Gradient Descent (SGD)** : mise à jour après chaque exemple.
 * **Mini-Batch Gradient Descent** : compromis (lot de données).
 
-![Batch Vs Stochastic](Image/BatcVSStochastic.png)
+![Batch Vs Stochastic](Image/BatchVSStochastic.png)
 
 ---
 
