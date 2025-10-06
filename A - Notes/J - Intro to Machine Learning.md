@@ -150,9 +150,7 @@ Exemple en Python :
 ```python
 from sklearn.model_selection import train_test_split
 xtrain, xtest, ytrain, ytest = train_test_split(X, y, train_size=0.8)
-````
-
----
+```
 
 ## 🔹 Généralisation du modèle
 
@@ -170,10 +168,3 @@ xtrain, xtest, ytrain, ytest = train_test_split(X, y, train_size=0.8)
 5. Création du modèle
 6. Entraînement
 7. Évaluation et optimisation
-
----
-
-```
-
-👉 Veux-tu que je génère aussi une **version avec schémas (images/diagrammes)** pour que ça ressemble à un vrai support de cours, comme ton PDF, ou tu préfères garder uniquement le texte en Markdown ?
-```

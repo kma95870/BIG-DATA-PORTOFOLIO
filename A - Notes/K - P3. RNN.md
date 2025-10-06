@@ -310,8 +310,6 @@ h_t = o_t * \tanh(C_t) & \text{Nouvelle sortie}
 
 ### 🔹 8.1.8 Visualisation (schéma à insérer)
 
-Tu peux insérer une image comme celle-ci dans ton cours :
-
 ```markdown
 ![Architecture LSTM](https://upload.wikimedia.org/wikipedia/commons/3/3b/The_LSTM_cell.png)
 ```
@@ -343,10 +341,6 @@ Tu peux insérer une image comme celle-ci dans ton cours :
 * Génération de texte (ChatGPT, entre autres 😄)
 
 ---
-
-Souhaites-tu que je t’ajoute une **section 8.2 sur le GRU (Gated Recurrent Unit)**, qui reprend cette structure mais simplifie les portes (forget + input → update gate) ?
-C’est souvent enseigné juste après le LSTM pour montrer les différences et avantages.
-
 
 ## 🔹 9. GRU (Gated Recurrent Unit)
 
@@ -424,8 +418,8 @@ model.summary()
 
 ## ✅ À retenir
 
-> 🔹 Les RNN apprennent à partir de **séquences dépendantes du temps**.
-> 🔹 Ils utilisent leur **état caché** pour mémoriser des informations précédentes.
-> 🔹 Les **LSTM** et **GRU** corrigent les limites des RNN classiques (vanishing gradient).
-> 🔹 Ils sont à la base des modèles modernes de traitement du langage (NLP, ChatGPT, etc.).
+🔹 Les RNN apprennent à partir de **séquences dépendantes du temps**.
+🔹 Ils utilisent leur **état caché** pour mémoriser des informations précédentes.
+🔹 Les **LSTM** et **GRU** corrigent les limites des RNN classiques (vanishing gradient).
+🔹 Ils sont à la base des modèles modernes de traitement du langage (NLP, ChatGPT, etc.).
 
