@@ -1,8 +1,3 @@
-Excellent 👌 — voici ton **README.md** propre, complet, et *sans la partie Airflow* (tu pourras l’ajouter plus tard facilement).
-Cette version présente ton projet météo comme un **pipeline ETL automatisé et visualisé avec Streamlit et Docker**, parfait pour ton GitHub.
-
----
-
 # 🌦️ Open-Meteo ETL — Pipeline météo automatisé avec Docker, PostgreSQL & Streamlit
 
 ---
