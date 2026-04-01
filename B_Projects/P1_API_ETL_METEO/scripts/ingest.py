@@ -1,5 +1,5 @@
-import os, json, requests
-from datetime import datetime, timezone
+import os, json, requests #interaction fichier, lire/écrire json, envoyer rqt HTTP (Appel API)
+from datetime import datetime, timezone #gestion date et heure avec fuseaux horaires
 
 #COORDONNEES DE PARIS
 LAT, LON = 48.8566, 2.3522
@@ -22,14 +22,14 @@ def save_raw(playload):
     os.makedirs(outdir,exist_ok=True) #création dossier si inexistant
     path = os.path.join(outdir, f"openmeteo_{ts}.json") #construction du chemin complet du fichier
     with open(path, "w", encoding= "utf-8") as f: #ouvre fichier en écriture
-        json.dump(playload,f,ensure_ascii=False) #dump écrit fichier 
+        json.dump(playload,f,ensure_ascii=False) #dump écrit le dcitionnaire sous frome JSON
     print(path)
     return path
 
-def main():
+def main(): #fonction principale
     data = fetch_openmeteo()
     save_raw(data)
 
-if __name__ == "__main__":
+if __name__ == "__main__": #Bloc d'execution
     main()
 
