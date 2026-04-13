@@ -1,0 +1,20 @@
+# Secrets
+**/.env
+
+# Environnements Python
+**/.venv/
+**/venv/
+
+# Cache Python
+**/__pycache__/
+**/*.pyc
+
+# Données générées
+**/data/vectorstore/
+
+# Streamlit cache
+**/.streamlit/
+
+# OS
+.DS_Store
+Thumbs.db
